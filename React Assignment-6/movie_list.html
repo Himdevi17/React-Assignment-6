@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles */
+        .movie-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+            padding: 20px;
+        }
+        .movie-item {
+            text-align: center;
+        }
+        .movie-image {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <a href="movie_details.html?title=Movie%201">
+        <div class="container">
+            <h1 class="mt-4">Movie List</h1>
+            <div class="movie-container mt-4"></div>
+        </div>
+    
+    </a>
+    
+    
+    <script>
+        // Sample movie data
+        const movies = [
+            { title: "Moana", image: "movie.jpg" },
+            { title: "Avatar", image: "movie2.jpg" },
+            { title: "Hanuman", image: "movie3.jpg" },
+            { title: "Dear Comrade", image: "movie4.jpg" },
+            { title: "OK Jaanu", image: "movie5.jpg" },
+            { title: "Fanaa", image: "movie6.jpg" },
+            { title: "Raone", image: "movie7.jpg" },
+            { title: "Wanted", image: "movie8.jpg" },
+            { title: "English Vinglish", image: "movie9.jpg" },
+            { title: "Little Things", image: "movie10.jpg" }
+            // Add more movies here
+        ];
+
+        // Function to display movies
+        function displayMovies() {
+            const movieContainer = document.querySelector('.movie-container');
+            movieContainer.innerHTML = ''; // Clear previous content
+
+            movies.forEach(movie => {
+                const movieItem = document.createElement('div');
+                movieItem.classList.add('movie-item');
+
+                const movieImage = document.createElement('img');
+                movieImage.classList.add('movie-image');
+                movieImage.src = movie.image;
+                movieImage.alt = movie.title;
+
+                const movieTitle = document.createElement('p');
+                movieTitle.textContent = movie.title;
+
+                movieItem.appendChild(movieImage);
+                movieItem.appendChild(movieTitle);
+
+                movieContainer.appendChild(movieItem);
+            });
+        }
+
+        // Display movies when the page loads
+        window.onload = displayMovies;
+    </script>
+</body>
+</html>

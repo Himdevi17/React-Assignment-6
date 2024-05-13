@@ -1,0 +1,43 @@
+<!-- Movie Details Page (movie_details.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+   
+    <div class="container">
+        <h1 class="mt-4">Movie Details</h1>
+        <p>Movie Title: <span id="movieTitle"></span></p>
+        <!-- Add more movie details here -->
+        <button class="btn btn-primary" onclick="goToBookingForm()">Book Seat</button>
+    </div>
+    <script>
+        // Function to retrieve movie title from query parameter
+        function getMovieTitle() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('title');
+        }
+        // Function to display movie details
+    function displayMovieDetails() {
+           const movieTitle = getMovieTitle();
+           document.getElementById('movieTitle').textContent = movieTitle;
+    // Add more movie details here
+}
+
+
+        // Function to navigate to book seat page
+        function goToBookingForm() {
+        const movieTitle = getMovieTitle();
+        window.location.href = `form.html?title=${encodeURIComponent(movieTitle)}`;
+    }
+
+        // Display movie details when the page loads
+        window.onload = displayMovieDetails;
+
+    </script>
+</body>
+</html>
